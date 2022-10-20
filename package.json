@@ -1,6 +1,6 @@
 {
   "name": "ducoboxhttp",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "HTTP grabber ducobox",
   "main": "ducoboxHTTP.js",
   "scripts": {
@@ -10,15 +10,19 @@
     "type": "git",
     "url": "git+https://github.com/TheWalkingDadNL/Ducobox.git"
   },
-  "keywords": [ "node-red", "ducobox" ],
+  "keywords": [
+    "node-red",
+    "ducobox"
+  ],
   "author": "Eric van Beesten",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/TheWalkingDadNL/Ducobox/issues"
   },
-  "node-red" : {
-      "nodes": {
-          "ducobox": "ducoboxHTTP.js"
-      }},
+  "node-red": {
+    "nodes": {
+      "ducobox": "ducoboxHTTP.js"
+    }
+  },
   "homepage": "https://github.com/TheWalkingDadNL/Ducobox#readme"
 }
