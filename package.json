@@ -20,7 +20,7 @@
   },
   "node-red" : {
       "nodes": {
-          "lower-case": "ducoboxHTTP.js"
+          "ducobox": "ducoboxHTTP.js"
       }},
   "homepage": "https://github.com/TheWalkingDadNL/Ducobox#readme"
 }

@@ -1,25 +1,53 @@
+<script type="text/x-red" data-template-name="ducoboxSettings">
+	<div class="form-row">
+        <label for="node-config-input-name"><i class="icon-bookmark"></i> Naam</label>
+       <input type="text" id="node-config-input-name">
+    </div>
+	<div class="form-row">
+	        <label for="node-config-input-ip_adrs"><i class="fa fa-tag"></i> Ip adres</label>
+        <input type="text" id="node-config-input-ip_adrs">
+    </div>
+</script>
+
 <script type="text/javascript">
-  RED.nodes.registerType('ducoboxHTTP', {
+  RED.nodes.registerType('ducoboxSettings',{
+      category: 'config',
+      defaults: {
+          name: {value: ""},
+      },
+      credentials: {
+            ip_adrs: {type:"text",required:true}
+      },
+       label: function() {
+          return this.name|| "My IP Adress";
+      }
+  });
+</script>
+
+<script type="text/x-red" data-template-name="ducoboxHTTP">
+    <div class="form-row">
+        <label for="node-input-server"><i class="fa fa-user"></i> Server</label>
+        <input type="text" id="node-input-server">
+    </div>
+    <div class="form-row">
+        <label for="node-input-deviceID"><i class="fa fa-tag"></i> Device ID</label>
+        <input type="text" id="node-input-deviceID" placeholder="deviceID">
+    </div>
+</script>
+
+<script type="text/javascript">
+  RED.nodes.registerType('ducoboxHTTP',{
       category: 'ducobox',
       color: '#C0DEED',
        defaults: {
-          ip_adrs: { value: "" },
+            server: {type: "ducoboxSettings", required: true},
+            deviceID: {value:""}			
       },
- 
+      inputs: 1,
+      outputs: 1,
       icon: "ducobox.png",
       label: function() {
           return this.name||"ducoboxHTTP";
       }
   });
-</script>
-
-<script type="text/html" data-template-name="ducoboxHTTP">
-    <div class="form-row">
-        <label for="node-input-ip_adrs"><i class="fa fa-tag"></i> Ip adres</label>
-        <input type="text" id="node-input-ip_adrs">
-    </div>
-</script>
-
-<script type="text/html" data-help-name="ducoboxHTTP">
-  <p>Grab status from ducobox</p>
 </script>
