@@ -10,9 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/TheWalkingDadNL/Ducobox.git"
   },
-  "keywords": [
-    "ducobox"
-  ],
+  "keywords": [ "node-red", "ducobox" ],
   "author": "Eric van Beesten",
   "license": "ISC",
   "bugs": {
