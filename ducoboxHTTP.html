@@ -1,12 +1,23 @@
 <script type="text/x-red" data-template-name="ducoboxSettings">
 	<div class="form-row">
-        <label for="node-config-input-name"><i class="icon-bookmark"></i> Naam</label>
-       <input type="text" id="node-config-input-name">
+        <label for="node-config-input-name"><i class="icon-bookmark"></i> Servername</label>
+       <input type="text" id="node-config-input-name" placeholder="My DucoBox">
     </div>
 	<div class="form-row">
-	        <label for="node-config-input-ip_adrs"><i class="fa fa-tag"></i> Ip adres</label>
-        <input type="text" id="node-config-input-ip_adrs">
+	        <label for="node-config-input-ip_adrs"><i class="fa fa-tag"></i> IP-adress</label>
+        <input type="text" id="node-config-input-ip_adrs" placeholder="For example, 192.168.1.100">
     </div>
+</script>
+
+<script type="text/x-red" data-help-name="ducoboxSettings">
+    <h3>Instructions</h3>
+    <dl class="message-properties">
+
+        <dt>Servername</dt>
+        <dd>Give your server a name, for example "My Ducobox"</dd>
+        <dt>IP-adress</dt>
+        <dd>IP adres of your ducobox communicationprint. For example "192.168.1.100"</dd>
+    </dl>
 </script>
 
 <script type="text/javascript">

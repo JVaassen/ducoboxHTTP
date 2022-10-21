@@ -22,7 +22,9 @@ module.exports = function(RED) {
 	request(URL, function (error, response, body) {
 				
 			if (error) {
-                console.error(error);
+				node.status({fill:"red",shape:"ring",text:"Error"});
+				node.error('Error fetching.');
+				
 		    }
 			else if (body)
 			{ 
@@ -39,7 +41,7 @@ module.exports = function(RED) {
 		this.IP = RED.nodes.getCredentials(n.server);
 		this.deviceID = n.deviceID;
 		var node = this;
-		var URL = node.IP.ip_adrs + 'nodeinfoget?node=' + node.deviceID;
+		var URL = 'http://'+ node.IP.ip_adrs + '/nodeinfoget?node=' + node.deviceID;
         node.on('input', function(msg, send, done) {
             
 			
