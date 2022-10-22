@@ -35,6 +35,45 @@
   });
 </script>
 
+<script type="text/x-red" data-template-name="ducoboxSend">
+    <div class="form-row">
+        <label for="node-input-server"><i class="fa fa-user"></i> Server</label>
+        <input type="text" id="node-input-server">
+    </div>
+    <div class="form-row">
+        <label for="node-input-deviceID"><i class="fa fa-tag"></i> Device ID</label>
+        <input type="text" id="node-input-deviceID" placeholder="deviceID">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="ducoboxSend">
+    <p>Uses this node to alter settings on your ducobox.</p>
+    <h3>Optional Inputs</h3>
+    <dl class="message-properties">
+        <dt>msg.CO2Setpoint</dt>
+        <dd>Setpoint for your CO2. If ducobox measures more CO2 then the setpoint it will increase flow</dd>
+        <dt>sg.Operation_State</dt>
+        <dd>State of ducobox. Available states are: AUTO, AUT1, AUT2, AUT3, MAN1, MAN2, MAN3, EMPT, CNT1, CNT2, CNT3. <b>Default setting: AUTO</b></dd>
+    </dl>
+</script>
+
+<script type="text/javascript">
+  RED.nodes.registerType('ducoboxSend',{
+      category: 'ducobox',
+      color: '#C0DEED',
+       defaults: {
+            server: {type: "ducoboxSettings", required: true},
+            deviceID: {value:""}			
+      },
+      inputs: 1,
+      outputs: 0,
+      icon: "ducobox.png",
+      label: function() {
+          return this.name||"ducoboxSend";
+      }
+  });
+</script>
+
 <script type="text/x-red" data-template-name="ducoboxHTTP">
     <div class="form-row">
         <label for="node-input-server"><i class="fa fa-user"></i> Server</label>

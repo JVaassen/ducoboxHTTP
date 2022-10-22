@@ -1,6 +1,8 @@
 # DucoboxHTTP
 
 [![platform](https://img.shields.io/badge/platform-Node--RED-red)](https://nodered.org)
+[![Downloads](https://img.shields.io/npm/dt/ducoboxhttp.svg)](https://www.npmjs.com/package/ducoboxhttp)
+[![NPM](https://img.shields.io/npm/v/ducoboxhttp?logo=npm)](https://www.npmjs.com/package/ducoboxhttp)
 
 ## Description
 
