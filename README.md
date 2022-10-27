@@ -19,7 +19,7 @@ Add your IP-adres in de node and the node-ID you want to read. You can look up t
 ## Roadmap
 
 What is still on the roadmap?
-- Writing values to ducobox, including setting speed manual. (Top priority)
+- Writing values to ducobox, including setting speed manual. (Top priority and part of this is in the current release)
 - A timer so values are automaticly get fetched. Instead of using a injection. 
 - Other way of exporting data, instead of JSON output. 
 - Bugfixes
@@ -27,26 +27,11 @@ What is still on the roadmap?
 On the long term:
 - More flexibility in node, like auto fetching all nodeID's.  
 
-## Version
+## Changelog
 
-What are the changes in version
-0.0.4: 
-- Fixed IP-adres. Now only IP-adres is needed instead of the http prefix. 
-- Addes Node Help in the server settings node. 
-- Update README.md
-- Beter error handling. 
-
-0.0.3: 
-- Fixed URL to github
-
-0.0.2: 
-- Minor stuff
-
-0.0.1:
-- First release
-
+Full changelog can be found [here](/CHANGELOG.md) 
 
 ## Sidenode
 
-This is my first Node-red contribution. 
+This is my first Node-red contribution. Please let me know in the discussion if you having troubles, missing features or beeing happy with the node. 
 
