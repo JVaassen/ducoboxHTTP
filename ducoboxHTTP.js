@@ -14,7 +14,24 @@ module.exports = function(RED) {
         }
     });	
 	
-	function getValues(node, URL, callback){
+	function getBoxinfo(node, URLboxinfoIP, callback){
+			request(URLboxinfoIP, function (error, response, body) {
+				
+			if (error) {
+				node.status({fill:"red",shape:"ring",text:"Error"});
+				node.error('Error fetching boxinfo.');
+				
+		    }
+			else if (body)
+			{ 
+			//console.log('body:', body); // Print in console de body
+            var resultboxinfo = JSON.parse(body);
+		   callback(resultboxinfo);
+	}});
+	}
+	
+	function getValues(node, IPadr, dID, callback){
+	var URL = 'http://'+ IPadr + '/nodeinfoget?node=' + dID;
 	
 	request(URL, function (error, response, body) {
 				
@@ -25,12 +42,15 @@ module.exports = function(RED) {
 		    }
 			else if (body)
 			{ 
-			console.log('body:', body); // Print in console de body
+			//console.log('body:', body); // Print in console de body
             var result = JSON.parse(body);
+
 			callback(result);
 	}});
 	
 	}
+	
+
 	
 	function getDevicetype(node, callback) {
 		
@@ -63,7 +83,7 @@ module.exports = function(RED) {
 	function setState(node, command, value, callback){
 		if (command === 'Operation_State'){
 			var URL = 'http://'+ node.IP.ip_adrs + '/nodesetoperstate?node='+ node.deviceID + '&value=' + value;
-			console.log(URL);
+			//console.log(URL);
 		} 
 		if (command === 'CO2Setpoint' || command === 'RHSetpoint'){
 			
@@ -104,7 +124,7 @@ module.exports = function(RED) {
             };
 			
 			getDevicetype(node, (devID) => {
-			console.log("Nodetype fetched: " +devID); 
+			//console.log("Nodetype fetched: " +devID); 
 			
 			for (let r of ['Operation_State']) {
                 if (configvalue[r]) {
@@ -135,7 +155,7 @@ module.exports = function(RED) {
 
 				if (devicetype === devID){
 					setState(node, d, configvalue[d], (result) => {
-						console.log(`Send: `+ d);	
+						// console.log(`Send: `+ d);	
 						node.status({fill:"green",shape:"ring",text:"Send"});	
                    });
 					console.log("Value send: " + d);
@@ -159,16 +179,34 @@ module.exports = function(RED) {
         RED.nodes.createNode(this,n);
 		this.IP = RED.nodes.getCredentials(n.server);
 		this.deviceID = n.deviceID;
+		this.boxinfo = n.boxinfo;
 		var node = this;
-		var URL = 'http://'+ node.IP.ip_adrs + '/nodeinfoget?node=' + node.deviceID;
         node.on('input', function(msg, send, done) {
             
+			if (node.boxinfo){
+					var URLboxinfoIP = 'http://'+ node.IP.ip_adrs + '/boxinfoget';	
+					getValues(node, node.IP.ip_adrs, node.deviceID, (result) => {
+						
+							getBoxinfo(node, URLboxinfoIP, (resultboxinfo) => {
+							   	msg.payload = {...result, ...resultboxinfo};
+								node.send(msg);
+								node.status({fill:"green",shape:"ring",text:"Fetched inc boxinfo"});							 
+								
+							});
+
+			});
 			
-			getValues(node, URL, (result) => {
+			
+				}
+			else{
+			
+			getValues(node, node.IP.ip_adrs, node.deviceID, (result) => {
+				
 				msg.payload = result;
 				node.send(msg);
 				node.status({fill:"green",shape:"ring",text:"Fetched"});
 			});
+			}
 			
 			done();
         });

@@ -65,7 +65,7 @@
       color: '#C0DEED',
        defaults: {
             server: {type: "ducoboxSettings", required: true},
-            deviceID: {value:""}			
+            deviceID: {value:""}	
       },
       inputs: 1,
       outputs: 0,
@@ -85,6 +85,10 @@
         <label for="node-input-deviceID"><i class="fa fa-tag"></i> Device ID</label>
         <input type="text" id="node-input-deviceID" placeholder="deviceID">
     </div>
+	<div class="form-row">
+        <label for="node-input-deviceID"><i class="fa fa-info-circle"></i> Boxinfo</label>
+        <input type="checkbox" id="node-input-boxinfo" placeholder="boxinfo">
+    </div>
 </script>
 
 <script type="text/javascript">
@@ -93,7 +97,8 @@
       color: '#C0DEED',
        defaults: {
             server: {type: "ducoboxSettings", required: true},
-            deviceID: {value:""}			
+            deviceID: {value:""},	
+			boxinfo: {value: false}
       },
       inputs: 1,
       outputs: 1,

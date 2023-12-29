@@ -1,5 +1,7 @@
 ### Changelog
 All notable changes will be documented in this file.
+**[0.2.0]** - 2023-12-29
+- Long time no update! So here is some new stuff. Added option to include boxinfo. In the node you can select a checkbox to include boxinfo. This is a featurerequest, so please give feedback is something isnt working proper. 
 
 **[0.0.6]** - 2022-10-23
 - Added device check. This way there arent any values writing for nodes that don't support the value. 
