@@ -16,6 +16,10 @@ To install the stable version use the `Menu - Manage palette` option and search 
 
 Add your IP-adres in de node and the node-ID you want to read. You can look up the node-ID by accessing your ducobox on http://IPADRESDUCOBOX
 
+Pre-requisite is the nodejs module "request". That can be installed by
+
+    npm install request
+    
 ## Roadmap
 
 What is still on the roadmap?
